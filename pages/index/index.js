@@ -6,6 +6,7 @@ Page({
         city:'',
         weatherlist:'',
         areaList,
+        aqi:'',//当天天气
         show:false //省市弹出框是否展示
     },
     onShow(){
@@ -38,6 +39,7 @@ Page({
 		   url: 'http://www.yiketianqi.com/api?version=v9&appid=53923538&appsecret=ZImIQ5Cm&city='+this.data.city,
 		   success:(res)=>{
 		       this.setData({
+                  aqi:res.data.aqi,
 		           weatherlist:res.data.data
 		       })
 		   }

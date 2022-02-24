@@ -1,17 +1,46 @@
-<view>{{city}}</view>
-<view class="weather"> 
-  <view wx:for="{{weatherlist}}" wx:key="index" wx:for-index="index">
-    <view>
-      <view>日期{{index}}：{{item.date}}</view>
-      <view>星期{{item.week}}</view>
-      <view>天气：{{item.wea_night}}</view>
-      <view>空气{{item.air_level}}</view>
-      <view>温度：{{item.tem}}</view>
+<!-- <wxs  module="weatherImg" src="../../utils/weatherImg.wxs></wxs> -->
+<wxs module="weatherImg" src="../../utils/weatherImg.wxs"></wxs>
+<view class="wrap">
+  <view class="myNavCls">天气助手</view>
+  <view class="cityName">{{city}}</view>
+  <view class="toDayWeather">
+    <view class="flex WeatherDesc">
+      <image src="../../img/0.png" class="weatherImg" wx:if="{{weatherImg.weatherImg(weatherlist[0].wea,0)}}"></image>
+      <image src="../../img/7.png" class="weatherImg" wx:if="{{weatherImg.weatherImg(weatherlist[0].wea,1)}}"></image>
+      <image src="../../img/10.png" class="weatherImg"  wx:if="{{weatherImg.weatherImg(weatherlist[0].wea,2)}}"></image>
+      <image src="../../img/21.png" class="weatherImg"  wx:if="{{weatherImg.weatherImg(weatherlist[0].wea,3)}}"></image>
+      <image src="../../img/21.png" class="weatherImg"  wx:if="{{weatherImg.weatherImg(weatherlist[0].wea,4)}}"></image>
+      <image src="../../img/30.png" class="weatherImg"  wx:if="{{weatherImg.weatherImg(weatherlist[0].wea,5)}}"></image>
+      <view class="WeatherDescTXt">
+        <view>{{weatherlist[0].wea}}</view>
+        <view>{{weatherlist[0].win[0]}}</view>
+      </view>
     </view>
-    <view style="height:10px;background:red;width:100%"></view>
+    <view class="temperature">{{weatherlist[0].tem}}℃</view>
+    <view class="humidity">湿度：{{weatherlist[0].humidity}}   PM2.5:{{aqi.pm25}}   {{aqi.pm25_desc}}</view>
+  </view>
+  <view class="weatherWrap">
+    <view class="weather">
+      <view wx:for="{{weatherlist}}" wx:key="index" wx:for-index="index">
+        <view class="flex">
+          <view class="date flex3">{{item.date}}</view>
+          <view class="week flex2">{{item.week}}</view>
+          <view class="wea_night flex2" >
+            <image src="../../img/0.png" class="weatherImg2" wx:if="{{weatherImg.weatherImg(item.wea_night,0)}}"></image>
+          <image src="../../img/7.png" class="weatherImg2" wx:if="{{weatherImg.weatherImg(item.wea_night,1)}}"></image>
+          <image src="../../img/10.png" class="weatherImg2"  wx:if="{{weatherImg.weatherImg(item.wea_night,2)}}"></image>
+          <image src="../../img/21.png" class="weatherImg2"  wx:if="{{weatherImg.weatherImg(item.wea_night,3)}}"></image>
+          <image src="../../img/21.png" class="weatherImg2"  wx:if="{{weatherImg.weatherImg(item.wea_night,4)}}"></image>
+          <image src="../../img/30.png" class="weatherImg2"  wx:if="{{weatherImg.weatherImg(item.wea_night,5)}}"></image>
+          {{item.wea_night}} 
+          </view>
+          <view class="tem flex1">{{item.tem2}}~{{item.tem1}}</view>
+        </view>
+      </view>
+    </view>
+    <button type="default" bindtap="showPop" class="changeAreaBtn">切换地区</button>
   </view>
 </view>
-<button type="default" bindtap="showPop">切换地区</button>
-<van-popup show="{{ show }}" bind:close="onClose"  position="bottom"  round >    
-  <van-area area-list="{{ areaList }}" columns-num="{{ 2 }}" bind:confirm="confimCity" bind:cancel="cancelCity"/>
+<van-popup show="{{ show }}" bind:close="onClose" position="bottom" round>
+  <van-area area-list="{{ areaList }}" columns-num="{{ 2 }}" bind:confirm="confimCity" bind:cancel="cancelCity" />
 </van-popup>

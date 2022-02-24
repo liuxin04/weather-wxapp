@@ -45,16 +45,16 @@
         "ignoreUploadUnusedFiles": true,
         "packNpmManually": true,
         "packNpmRelationList": [
-          {
-            "packageJsonPath": "./package.json",
-            "miniprogramNpmDistDir": "./miniprogram/"
-          }
+            {
+                "packageJsonPath": "./package.json",
+                "miniprogramNpmDistDir": "./miniprogram/"
+            }
         ]
     },
     "compileType": "miniprogram",
     "libVersion": "2.19.4",
     "appid": "wxf454643be33d92c2",
-    "projectname": "%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5",
+    "projectname": "weather-wxapp",
     "debugOptions": {
         "hidedInDevtools": []
     },

@@ -2,5 +2,8 @@
   "usingComponents": {
     "van-area": "@vant/weapp/area/index",
     "van-popup": "@vant/weapp/popup/index"
-  }
+  },
+  "navigationBarBackgroundColor":"#ffffff",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle":"white"
 }
